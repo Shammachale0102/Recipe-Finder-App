@@ -9,17 +9,20 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4 flex gap-2">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col sm:flex-row items-center gap-3 mb-6"
+    >
       <input
         type="text"
         placeholder="Enter ingredients (comma separated)"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="border p-2 flex-1"
+        className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
       />
       <button
         type="submit"
-        className="bg-blue-500 text-white p-2 rounded"
+        className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md shadow transition duration-200"
       >
         Search
       </button>
