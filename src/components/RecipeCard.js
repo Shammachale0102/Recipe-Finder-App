@@ -1,3 +1,4 @@
+// src/components/RecipeCard.jsx
 import React, { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
 import { Link } from "react-router-dom";
@@ -6,37 +7,26 @@ const RecipeCard = ({ recipe }) => {
   const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
 
   const handleFavorite = () => {
-    if (isFavorite(recipe.id)) {
-      removeFavorite(recipe.id);
-    } else {
-      addFavorite(recipe);
-    }
+    isFavorite(recipe.id) ? removeFavorite(recipe.id) : addFavorite(recipe);
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition p-4 flex flex-col">
+    <div className="bg-white rounded-xl shadow-md hover:shadow-xl transform hover:scale-105 transition p-4">
       <img
         src={recipe.image}
         alt={recipe.title}
-        className="w-full h-48 object-cover rounded mb-3"
+        className="w-full h-40 object-cover rounded-md mb-4"
       />
       <h3 className="text-xl font-semibold mb-2">{recipe.title}</h3>
-      <div className="flex justify-between items-center mt-auto">
+      <div className="flex justify-between items-center mt-3">
         <Link
           to={`/recipe/${recipe.id}`}
-          className="text-blue-600 hover:underline font-medium"
+          className="text-emerald-600 hover:underline font-medium"
         >
           View Details
         </Link>
-        <button
-          onClick={handleFavorite}
-          className={`flex items-center gap-1 text-sm px-2 py-1 rounded transition ${
-            isFavorite(recipe.id)
-              ? "bg-red-100 text-red-500 hover:bg-red-200"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-          }`}
-        >
-          {isFavorite(recipe.id) ? "💔 Remove" : "❤️ Favorite"}
+        <button onClick={handleFavorite} className="text-xl">
+          {isFavorite(recipe.id) ? "💔" : "❤️"}
         </button>
       </div>
     </div>
@@ -44,4 +34,3 @@ const RecipeCard = ({ recipe }) => {
 };
 
 export default RecipeCard;
-

@@ -1,3 +1,4 @@
+// src/components/SearchBar.jsx
 import React, { useState } from "react";
 
 const SearchBar = ({ onSearch }) => {
@@ -9,22 +10,19 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col sm:flex-row items-center gap-3 mb-6"
-    >
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 items-center">
       <input
         type="text"
-        placeholder="Enter ingredients (comma separated)"
+        placeholder="Enter ingredients (e.g., tomato, cheese)"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+        className="w-full sm:w-auto flex-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 transition"
       />
       <button
         type="submit"
-        className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md shadow transition duration-200"
+        className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-2 rounded-lg shadow transition"
       >
-        Search
+        🔍 Search
       </button>
     </form>
   );
