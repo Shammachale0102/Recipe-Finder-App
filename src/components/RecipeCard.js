@@ -1,4 +1,4 @@
-// src/components/RecipeCard.jsx
+
 import React, { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
 import { Link } from "react-router-dom";
